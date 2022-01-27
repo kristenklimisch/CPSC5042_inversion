@@ -61,13 +61,15 @@ public class Inversion {
             }
             else {
 
-                // When L[i] > R[j], an inversion is required to
-                // sort the array in ascending order.
-                // Increment count of inversions.
-                mergeInversions++;
+                // When L[i] > R[j], there are inversions.
+                // The number of inversions is equal to
+                // (m + 1) - (l + i) because the left
+                // and right subarrays are already sorted,
+                // so all the remaining elements in the left
+                // subarray will be greater than R[j].
+                mergeInversions += (m + 1) - (l + i);
                 A[k] = R[j];
                 j++;
-
             }
             k++;
         }
@@ -112,6 +114,7 @@ public class Inversion {
             count += merge(A, l, m, r);
         }
         return count;
+
     }
 
     // Function:    countInversions
